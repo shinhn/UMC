@@ -1,5 +1,5 @@
 # UMC
-University MakeUs Challenge 1기
+University MakeUs Challenge 1기  
 2021.09.13 ~  
   
 ## UMC란?
