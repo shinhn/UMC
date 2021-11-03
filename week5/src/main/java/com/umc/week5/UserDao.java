@@ -22,7 +22,7 @@ public class UserDao {
     public List<GetUserRes> userRes(){
         return this.jdbcTemplate.query("SELECT * FROM users",
                 (rs, rowNum) -> new GetUserRes(
-                        rs.getInt("userIdx"),
+                        rs.getInt("userIndex"),
                         rs.getString("ID"),
                         rs.getString("userName"),
                         rs.getString("password"),

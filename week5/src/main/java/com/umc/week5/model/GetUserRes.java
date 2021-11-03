@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @AllArgsConstructor
 public class GetUserRes {
-    private int userIdx;
+    private int userIndex;
     private String ID;
     private String userName;
     private String password;
