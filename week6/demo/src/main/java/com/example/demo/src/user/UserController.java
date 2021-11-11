@@ -95,6 +95,7 @@ public class UserController {
         }
     }
 
+
     /**
      * 모든 회원들의  조회 API
      * [GET] /users
@@ -178,5 +179,16 @@ public class UserController {
         } catch (BaseException exception) {
             return new BaseResponse<>((exception.getStatus()));
         }
+    }
+
+    /**
+     * 회원 1명 삭제 API
+     * [DELETE] /users/:userIdx
+     */
+    // Path-variable
+    @ResponseBody
+    @DeleteMapping("/{userIdx}")
+    public void deleteUser(@PathVariable("userIdx") int userIdx) {
+        userService.deleteUser(userIdx);
     }
 }

@@ -79,4 +79,8 @@ public class UserService {
             throw new BaseException(DATABASE_ERROR);
         }
     }
+
+    public void deleteUser(int userIdx){
+        userDao.deleteUser(userIdx);
+    }
 }
