@@ -191,4 +191,22 @@ public class UserController {
     public void deleteUser(@PathVariable("userIdx") int userIdx) {
         userService.deleteUser(userIdx);
     }
+
+    /**
+     * 회원 정보 (email) 변경 API
+     * [PUT] /users/:userIdx
+     */
+    @ResponseBody
+    @PutMapping("/{userIdx}")
+    public BaseResponse<String> modifyUserEmail(@PathVariable("userIdx") int userIdx, @RequestBody User user) {
+        try {
+            PutUserReq putUserReq = new PutUserReq(userIdx, user.getEmail());
+            userService.modifyUserEmail(putUserReq);
+
+            String result = "유저 정보가 수정되었습니다.";
+            return new BaseResponse<>(result);
+        } catch (BaseException exception) {
+            return new BaseResponse<>((exception.getStatus()));
+        }
+    }
 }

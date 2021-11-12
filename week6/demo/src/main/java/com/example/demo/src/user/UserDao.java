@@ -75,7 +75,7 @@ public class UserDao {
                 checkEmailParams); // checkEmailQuery, checkEmailParams를 통해 가져온 값(intgud)을 반환한다. -> 쿼리문의 결과(존재하지 않음(False,0),존재함(True, 1))를 int형(0,1)으로 반환됩니다.
     }
 
-    // 회원정보 변경
+    // 회원정보-이름 변경
     public int modifyUserName(PatchUserReq patchUserReq) {
         String modifyUserNameQuery = "update User set nickname = ? where userIdx = ? "; // 해당 userIdx를 만족하는 User를 해당 nickname으로 변경한다.
         Object[] modifyUserNameParams = new Object[]{patchUserReq.getNickname(), patchUserReq.getUserIdx()}; // 주입될 값들(nickname, userIdx) 순
@@ -143,5 +143,13 @@ public class UserDao {
         String deleteQuery = "delete from User where userIdx = ?";
 
         return this.jdbcTemplate.update(deleteQuery, userIdx); // 대응시켜 매핑시켜 쿼리 요청(생성했으면 1, 실패했으면 0)
+    }
+
+    // 회원정보 이메일 변경
+    public int modifyUserEmail(PutUserReq putUserReq) {
+        String modifyUserEmailQuery = "update User set email = ? where userIdx = ? "; // 해당 userIdx를 만족하는 User를 해당 email으로 변경한다.
+        Object[] modifyUserEmailParams = new Object[]{putUserReq.getEmail(), putUserReq.getUserIdx()}; // 주입될 값들(email, userIdx) 순
+
+        return this.jdbcTemplate.update(modifyUserEmailQuery, modifyUserEmailParams); // 대응시켜 매핑시켜 쿼리 요청(생성했으면 1, 실패했으면 0)
     }
 }
